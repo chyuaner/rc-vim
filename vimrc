@@ -1,99 +1,99 @@
-" vundle
+" vUNDLE 套件管理
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" alternatively, pass a path where Vundle should install plugins
-"let path = '~/some/path/here'
-"call vundle#rc(path)
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between here and filetype plugin indent on.
-" scripts on GitHub repos
+" List All Plugins
+" 佈景主題
+Plugin 'editorconfig/editorconfig-vim' 
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-colorscheme-switcher'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'flazz/vim-colorschemes'
+" 介面顯示
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'tpope/vim-rails.git'
+Plugin 'majutsushi/tagbar'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Shougo/neocomplcache.vim'
+" 編輯加強
+Plugin 'Yggdroot/indentLine'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'ap/vim-css-color'
+Plugin 'KabbAmine/vCoolor.vim'
+Plugin 'Rykka/clickable.vim'
+Plugin 'Rykka/clickable-things'
+Plugin 'Rykka/os.vim'
+" Plugin 'stefanich/php.vim-html-enhanced'
+Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plugin 'vim-scripts/PHP-correct-Indenting'
+Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'Townk/vim-autoclose'
+Plugin 'othree/html5.vim'
+Plugin 'StanAngeloff/php.vim'
 Plugin 'groenewege/vim-less'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" scripts from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-" scripts not on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" ...
 
-filetype plugin indent on     " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-" Put your stuff after this line
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-" Other
-execute pathogen#infect()
-
-lang zh_TW
-language mes zh_TW
-set langmenu=zh_TW.UTF-8
-
-" 檔案編碼
-set encoding=utf-8
+"vim-scripts/php.vim-html-enhanced' 檔案編碼
+set encoding encoding=utf-8
 set fileencodings=utf-8,cp950
- 
-" 編輯喜好設定
-syntax on        " 語法上色顯示
-"set nocompatible " VIM 不使用和 VI 相容的模式
-"set listchars=tab:>\ ,trail:#,extends:>
-set listchars=eol:¬,tab:>\ ,extends:>,precedes:<
-set list
-set ai           " 自動縮排
-set shiftwidth=4 " 設定縮排寬度
-set tabstop=4    " tab 的字元數
-set softtabstop=4
-set expandtab   " 用 space 代替 tab
-" 設定摺疊 {{{ , }}}
-"set foldmethod=marker
-"set foldmethod=syntax
-"set fdm=syntax
-"set foldnestmax=3
 
-" 共用剪貼簿
-set clipboard=unnamed 
-nmap <C-V> "+gP
-imap <C-V> <ESC><C-V>i
-vmap <C-C> "+y 
-set mouse=a       " 啟用滑鼠
- 
-set number       " 顯示行號
-set ruler        " 顯示右下角設定值
-set backspace=2  " 在 insert 也可用 backspace
-set ic           " 設定搜尋忽略大小寫
-set ru           " 第幾行第幾個字
-set hlsearch     " 設定高亮度顯示搜尋結果
-set incsearch    " 在關鍵字還沒完全輸入完畢前就顯示結果
-set smartindent  " 設定 smartindent
-set confirm      " 操作過程有衝突時，以明確的文字來詢問
-set history=1000  " 保留 100 個使用過的指令
-set cursorline   " 顯示目前的游標位置
-set colorcolumn=80   " 顯示編輯器建議寬度
-set scrolloff=3  " 捲動時保留n行彈性
- 
+" 佈景主題
+syntax on                    " 語法上色
+
+" 要套用哪個佈景主題
+if has("gui_running") || &t_Co == 88 || &t_Co == 256
+  colorscheme darkburn
+else
+  set background=dark
+  colorscheme jellybeans
+endif
+
+" 指定主題切換快速鍵
+:let g:colorscheme_switcher_define_mappings=0
+  
+" 界面顯示
+set mouse=a                  " 啟用滑鼠
+set confirm                  " 操作過程有衝突時，以明確的文字來詢問
+set ruler                    " 顯示右下角設定值
+set cursorline               " 顯示目前的游標位置
+set cursorcolumn             " 顯示目前的游標位置
+set number                   " 顯示行號
+set colorcolumn=80           " 顯示編輯器建議寬度
+set scrolloff=3              " 捲動時保留n行彈性
 set laststatus=2
 set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
+
+" 縮排設定
+set smartindent
+set shiftwidth=4             " 設定縮排寬度
+set tabstop=4                " tab 的字元數
+set softtabstop=4
+set expandtab                " 用 space 代替 tab
+
+" 編輯設定
+set backspace=2              " 在 insert 也可用 backspace
+set history=1000             " 保留 1000 個使用過的指令
+
+" 搜尋設定
+set ic                       " 搜尋不分大小寫。
+set hlsearch                 " 設定高亮度顯示搜尋結果
+set incsearch                " 在關鍵字還沒完全輸入完畢前就顯示結果
 
 " Ctrl+J Ctrl+k 整行移動
 nnoremap <C-j> :m .+1<CR>==
@@ -108,9 +108,21 @@ nmap <TAB> v>
 nmap <S-TAB> v<
 vmap <TAB> >gv
 vmap <S-TAB> <gv
- 
-"colorscheme torte
-colorscheme wombat
 
-filetype plugin indent on
+" 顯示程式碼函式列表
 nmap <F8> :TagbarToggle<CR>
+autocmd vimenter * TagbarOpen
+
+" 插入顏色快速鍵
+nmap <C-c> :VCoolor <CR>
+
+" 顯示行尾
+set listchars=eol:¬,tab:→→,trail:.,extends:>,precedes:<
+set list
+
+" NERDTree
+nmap <F7> :NERDTreeTabsToggle<CR>
+let NERDTreeShowHidden=1    " 顯示隱藏檔
+
+let g:neocomplcache_enable_at_startup = 1
+
