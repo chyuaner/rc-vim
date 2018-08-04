@@ -12,36 +12,37 @@ Plugin 'gmarik/Vundle.vim'
 " List All Plugins
 " 佈景主題
 Plugin 'editorconfig/editorconfig-vim' 
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-colorscheme-switcher'
-Plugin 'nanotech/jellybeans.vim'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-colorscheme-switcher'
+"Plugin 'nanotech/jellybeans.vim'
 Plugin 'flazz/vim-colorschemes'
 " 介面顯示
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'asins/vim-dict'
 " 編輯加強
-Plugin 'Yggdroot/indentLine'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'ap/vim-css-color'
-Plugin 'KabbAmine/vCoolor.vim'
-Plugin 'Rykka/clickable.vim'
-Plugin 'Rykka/clickable-things'
-Plugin 'Rykka/os.vim'
+"Plugin 'Yggdroot/indentLine'
+"Plugin 'tomtom/tcomment_vim'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'honza/vim-snippets'
+"Plugin 'tpope/vim-surround'
+"Plugin 'ap/vim-css-color'
+"Plugin 'KabbAmine/vCoolor.vim'
+"Plugin 'Rykka/clickable.vim'
+"Plugin 'Rykka/clickable-things'
+"Plugin 'Rykka/os.vim'
 " Plugin 'stefanich/php.vim-html-enhanced'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
-Plugin 'vim-scripts/PHP-correct-Indenting'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
-Plugin 'Townk/vim-autoclose'
-Plugin 'othree/html5.vim'
+"Plugin 'captbaritone/better-indent-support-for-php-with-html'
+"Plugin 'vim-scripts/PHP-correct-Indenting'
+"Plugin 'vim-scripts/HTML-AutoCloseTag'
+"Plugin 'Townk/vim-autoclose'
+"Plugin 'othree/html5.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'groenewege/vim-less'
 
@@ -103,6 +104,13 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 " 啟用Tab縮牌
 nmap <TAB> v>
 nmap <S-TAB> v<
@@ -111,7 +119,7 @@ vmap <S-TAB> <gv
 
 " 顯示程式碼函式列表
 nmap <F8> :TagbarToggle<CR>
-autocmd vimenter * TagbarOpen
+"autocmd vimenter * TagbarOpen
 
 " 插入顏色快速鍵
 nmap <C-c> :VCoolor <CR>
@@ -123,6 +131,13 @@ set list
 " NERDTree
 nmap <F7> :NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1    " 顯示隱藏檔
+let NERDTreeIgnore = ['\.swp$', '.DS_Store']
 
 let g:neocomplcache_enable_at_startup = 1
+
+" 自動補齊
+autocmd filetype javascript set dictionary+=$VIMFILES/bundle/vim-dict/dict/javascript.dic
+autocmd filetype javascript set dictionary+=$VIMFILES/bundle/vim-dict/dict/node.dic
+autocmd filetype css set dictionary+=$VIMFILES/bundle/vim-dict/dict/css.dic
+autocmd filetype php set dictionary+=$VIMFILES/bundle/vim-dict/dict/php.dic
 
